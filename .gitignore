@@ -1,0 +1,31 @@
+# Dependencias del proyecto
+node_modules/
+
+# Archivos de entorno y configuración sensible
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+
+# Archivos de depuración y logs
+npm-debug.log*
+yarn-debug.log*
+.nyc_output/
+coverage/
+.lintcache/
+*.log
+
+# Entornos de desarrollo locales (ej. VS Code)
+.vscode/
+
+# Archivos temporales o de compilación (si tuvieras)
+dist/
+build/
+tmp/
+*.tmp
+*.bak
+
+# Otros archivos ignorados por el sistema operativo
+.DS_Store # macOS
+Thumbs.db # Windows
