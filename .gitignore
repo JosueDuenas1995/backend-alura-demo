@@ -29,3 +29,6 @@ tmp/
 # Otros archivos ignorados por el sistema operativo
 .DS_Store # macOS
 Thumbs.db # Windows
+
+node_modules/
+docker/mysql-data/
