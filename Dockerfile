@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 
 # Exponer el puerto donde corre Express
-EXPOSE 3000
+EXPOSE 8080
 
 # Comando para ejecutar el servidor
 CMD ["node", "index.js"]
