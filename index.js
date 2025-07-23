@@ -21,3 +21,5 @@ const PORT = process.env.PORT || 8080; // Cloud Run inyectará PORT
 app.listen(PORT, '0.0.0.0', () => { // Escucha en 0.0.0.0 para todas las interfaces
   console.log(`🚀 Servidor backend corriendo en el puerto ${PORT}`);
 });
+
+//nueva actualizacionde prueba
