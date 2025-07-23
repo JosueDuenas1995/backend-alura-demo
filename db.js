@@ -4,7 +4,7 @@ require('dotenv').config(); // Esto es útil para desarrollo local, Cloud Run ge
 
 // --- Importa el conector de Cloud SQL que instalaste ---
 const { Connector } = require('@google-cloud/cloud-sql-connector'); // ¡Asegúrate que el nombre del módulo sea este!
-const { Auth } = require('google-auth-library'); // Necesario para la autenticación automática con Google
+const { GoogleAuth } = require('google-auth-library'); // Por esta línea// Necesario para la autenticación automática con Google
 
 // Aquí debes poner la cadena de conexión COMPLETA de tu instancia de Cloud SQL.
 // La obtuvimos de los logs y de Terraform.
@@ -12,7 +12,7 @@ const CLOUD_SQL_CONNECTION_NAME = 'dark-throne-464103-h1:us-central1:aluradataba
 
 // Crea una instancia del conector
 // El conector usa las credenciales de la cuenta de servicio de Cloud Run automáticamente.
-const auth = new Auth();
+const auth = new GoogleAuth();
 const connector = new Connector({ authClient: auth });
 
 /**
