@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 require('dotenv').config(); // Esto es útil para desarrollo local, Cloud Run gestiona las variables de entorno por sí mismo.
 
 // --- Importa el conector de Cloud SQL que instalaste ---
-const { Connector } = require('@google-cloud/cloud-sql-connector'); // <-- ¡Asegúrate que el nombre del módulo sea este!
+const { Connector } = require('@google-cloud/cloud-sql-connector'); // ¡Asegúrate que el nombre del módulo sea este!
 const { Auth } = require('google-auth-library'); // Necesario para la autenticación automática con Google
 
 // Aquí debes poner la cadena de conexión COMPLETA de tu instancia de Cloud SQL.
@@ -24,8 +24,8 @@ async function connectToDatabase() {
   try {
     // El conector obtiene las opciones de conexión (incluyendo el socketPath correcto)
     // para MySQL2.
-    const clientOpts = await connector.get and
-      Connection(CLOUD_SQL_CONNECTION_NAME, 'mysql'); // 'mysql' es el tipo de base de datos
+    // --- ¡CORRECCIÓN AQUÍ! Era 'connector.get and Connection', ahora es 'connector.getConnection' ---
+    const clientOpts = await connector.getConnection(CLOUD_SQL_CONNECTION_NAME, 'mysql'); // 'mysql' es el tipo de base de datos
 
     // Crea la conexión MySQL usando las opciones del conector y tus credenciales
     const connection = mysql.createConnection({
