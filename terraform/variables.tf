@@ -1,17 +1,30 @@
-# variables.tf
 variable "project_id" {
+  description = "ID del proyecto de GCP"
   type        = string
-  description = "ID del proyecto en Google Cloud"
 }
 
 variable "region" {
+  description = "Región para desplegar los recursos"
   type        = string
-  default     = "us-central1"
-  description = "Región de despliegue"
 }
 
-variable "backend_name" {
+variable "db_instance_name" {
+  description = "Nombre de la instancia de Cloud SQL"
   type        = string
-  default     = "alurabackend"
-  description = "Nombre del servicio Cloud Run"
+}
+
+variable "db_user" {
+  description = "Usuario para la base de datos"
+  type        = string
+}
+
+variable "db_password" {
+  description = "Contraseña para la base de datos"
+  type        = string
+  sensitive   = true
+}
+
+variable "db_name" {
+  description = "Nombre de la base de datos"
+  type        = string
 }

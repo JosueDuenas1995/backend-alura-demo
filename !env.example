@@ -1,0 +1,7 @@
+crea un archivo .env para guardar los siguientes datos
+
+DB_HOST=localhost
+DB_USER=nombre de tu user
+DB_PASSWORD=tu contraseña segura 
+DB_NAME=nombre de tu base de datos
+PORT=3000

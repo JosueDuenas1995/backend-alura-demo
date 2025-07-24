@@ -10,6 +10,9 @@ override.tf
 override.tf.json
 secrets.tfvars
 secrets.auto.tfvars
+variables.tf
+versions.tf
+outputs.tf
 
 # Archivos de Node.js
 node_modules/
@@ -27,6 +30,8 @@ yarn-error.log*
 /build
 /tmp
 /logs
+
+
 
 # Archivos de MySQL
 # Ignora archivos de configuración o de respaldo que contengan datos sensibles.

@@ -1,0 +1,10 @@
+runtime: nodejs20
+instance_class: F1
+automatic_scaling:
+  min_instances: 0
+  max_instances: 0
+env_variables:
+  DB_HOST: '35.239.130.225'  # ← IP pública de tu base de datos (obtenida después del apply)
+  DB_USER: 'alura'
+  DB_PASSWORD: 'amorbest*95'
+  DB_NAME: 'contactos_db'

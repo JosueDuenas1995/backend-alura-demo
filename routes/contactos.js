@@ -1,44 +1,53 @@
 // routes/contactos.js
-const { body, validationResult } = require('express-validator');
 const express = require('express');
+const { body, validationResult } = require('express-validator');
 const router = express.Router();
+const db = require('../db'); // ← conexión real con Cloud SQL
 
-// --- Datos de ejemplo para simular la base de datos ---
-let mockContacts = [
-  { id: 1, nombre_completo: 'Juan Pérez', email: 'juan@example.com', telefono: '111-222-3333' },
-  { id: 2, nombre_completo: 'Ana Gómez', email: 'ana@example.com', telefono: '444-555-6666' },
-  { id: 3, nombre_completo: 'Pedro Ramírez', email: 'pedro@example.com', telefono: '777-888-9999' }
-];
-
-// --- Obtener todos los contactos (SIMULADO) ---
-router.get('/', (req, res) => {
-  console.log('Simulando obtención de contactos...');
-  res.json(mockContacts);
+// Obtener todos los contactos desde la base de datos
+router.get('/', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM contactos');
+    res.json(rows);
+  } catch (error) {
+    console.error('❌ Error al obtener contactos:', error);
+    res.status(500).json({ error: 'Error al obtener contactos' });
+  }
 });
 
-// --- Ruta POST (SIMULADA) ---
-router.post('/',
+// Insertar un nuevo contacto
+router.post(
+  '/',
   [
     body('nombre_completo').isString().notEmpty().withMessage('El nombre es obligatorio'),
-    body('email').isEmail().withMessage('Email inválido')
-    // Agrega más validaciones según tu modelo
+    body('email').isEmail().withMessage('Email inválido'),
+    body('telefono').optional().isString()
   ],
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const datos = req.body;
-    // Asigna un ID simulado
-    const newId = mockContacts.length > 0 ? Math.max(...mockContacts.map(c => c.id)) + 1 : 1;
-    const newContact = { id: newId, ...datos };
-    mockContacts.push(newContact); // Agrega al array simulado
-    console.log('Simulando creación de contacto:', newContact);
-    res.status(201).json(newContact);
+
+    const { nombre_completo, email, telefono } = req.body;
+
+    try {
+      const [result] = await db.query(
+        'INSERT INTO contactos (nombre_completo, email, telefono) VALUES (?, ?, ?)',
+        [nombre_completo, email, telefono]
+      );
+      const newContact = { id: result.insertId, nombre_completo, email, telefono };
+      res.status(201).json(newContact);
+    } catch (error) {
+      console.error('❌ Error al insertar contacto:', error);
+      res.status(500).json({ error: 'Error al insertar contacto' });
+    }
   }
 );
 
 module.exports = router;
+
+
 
 
 
