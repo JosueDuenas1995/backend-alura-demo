@@ -1,12 +1,14 @@
 terraform {
+  required_version = ">= 1.6.0" # o la versión de Terraform 
+
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 5.0" # Tu versión del proveedor de Google
+      version = "~> 5.0" # Proveedor para recursos de Google Cloud
     }
     random = {
       source  = "hashicorp/random"
-      version = "~> 3.0" # Una versión compatible para random_id
+      version = "~> 3.0" # Proveedor para recursos aleatorios (random_id, etc.)
     }
   }
 }
