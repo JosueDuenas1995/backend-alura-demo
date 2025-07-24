@@ -1,0 +1,9 @@
+A fin de dar mas seguridad a la infraestructura 
+se recomeinda colocar los datos vitales de tu proyecto creando un .tfvars para tu proyecto, recuerda agregarlo a git ignore 
+
+project_id        = "gcp-proyect-12345"
+region            = "us-central1"
+db_instance_name  = "mi-instancia-sql"
+db_user           = "crea un user"
+db_password       = "crea un password"
+db_name           = "dale nombre a tu base de datos"
