@@ -8,6 +8,11 @@ variable "region" {
   type        = string
 }
 
+variable "zone" {
+  description = "Zona para los recursos"
+  type        = string
+}
+
 variable "db_instance_name" {
   description = "Nombre de la instancia de Cloud SQL"
   type        = string

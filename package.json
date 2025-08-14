@@ -12,12 +12,13 @@
   "description": "Este proyecto es una API backend desarrollada con Node.js y Express que permite gestionar contactos en una base de datos MySQL. Forma parte de un proyecto de **Infraestructura como Código (IaC)** utilizando **Terraform** para la configuración y despliegue de los recursos necesarios.",
   "dependencies": {
     "@google-cloud/cloud-sql-connector": "^1.8.2",
+    "@google-cloud/secret-manager": "^6.1.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
-    "mysql2": "^3.14.2"
+    "mysql2": "^3.14.3"
   }
 }

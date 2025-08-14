@@ -1,6 +1,7 @@
 provider "google" {
   project = var.project_id
   region  = var.region
+  zone = var.zone
 }
 
 resource "google_sql_database_instance" "mysql_instance" {
